@@ -22,14 +22,14 @@ NATO_STANDARTS = {
     "video_components": {
         0: [
             {
-                "source_file": "background_image",
+                "file": "background_image",
                 "slice": {"start": 0, "end": 2},
                 "position": [0, 0],
             },
         ],
         1: [
             {
-                "source_file": "video_1",
+                "file": "video_1",
                 "position": [0, 0],
                 "commands": [
                     {"slice": [0, 2]},
@@ -38,7 +38,7 @@ NATO_STANDARTS = {
                 ],
             },
             {  # lip sync part
-                "source_file": "video_1",
+                "file": "video_1",
                 "position": [0, 0],
                 "commands": [
                     {"slice": [2, 3]},
@@ -48,7 +48,7 @@ NATO_STANDARTS = {
                 ],
             },
             {
-                "source_file": "video_1",
+                "file": "video_1",
                 "position": [0, 0],
                 "commands": [
                     {"slice": [3, "end"]},

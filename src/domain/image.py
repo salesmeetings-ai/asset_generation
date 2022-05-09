@@ -6,8 +6,8 @@ import PIL.Image
 import numpy
 import requests
 
-from domain.dimensions import Dimensions
-from domain.position import Position
+from .dimensions import Dimensions
+from .position import Position
 
 
 class Image:
