@@ -10,12 +10,11 @@ def generate_vid():
     #  mask
     # concatenate
     return "<p>Hello, World!</p>"
-
-
 NATO_STANDARTS = {
     "output_format": "mp4",
     "files": {
         "video_1": {"hex": "abcdef", "format": "mp4"},
+        "image_logo": {"hex": "abcdef", "format": "jpeg"},
         "background_image": {"hex": "abcddd", "format": "jpeg"},
         "lip_sync_audio": {"hex": "abcddd", "format": "wav"},
     },
@@ -52,6 +51,7 @@ NATO_STANDARTS = {
             {
                 "file": "video_1",
                 "commands": [
+                    {"add_image": "image_logo"},
                     {"slice": [3, "end"]},
                     {"set_position": [0, 0]},
                     {"resize": [150, 150]},
