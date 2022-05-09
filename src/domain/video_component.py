@@ -1,10 +1,12 @@
 from dataclasses import dataclass
 from typing import List
 
-from src.domain.command import Command
+from src.domain import VideoClip
+from src.domain.effect import Effect
+from src.domain.position import Position
 
 
 @dataclass
 class VideoComponent:
-    file: str
-    commands: List[Command]
+    video_clip: VideoClip
+    effects: List[Effect]

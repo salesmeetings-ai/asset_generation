@@ -17,6 +17,8 @@ from domain.dimensions import Dimensions
 from domain.image import Image
 from domain.position import Position
 
+from src.domain.effect import Effect
+
 log = logging.getLogger(__name__)
 
 
@@ -179,6 +181,9 @@ class VideoClip:
             self.clip = CompositeVideoClip(clips)
             self.clip.duration = entire_clip_duration
             self._children = []
+
+    def apply_effect(self, effect: Effect):
+        pass
 
 
 def concatenate_video_clips(video_clips: List[VideoClip], method="chain"):
