@@ -14,10 +14,10 @@ def generate_vid():
 
 NATO_STANDARTS = {
     "output_format": "mp4",
-    "source_files": {
-        "video_1": {"hex": "abcdef", "format": "wav", "type": "mkv"},
-        "background_image": {"hex": "abcddd", "format": "wav", "type": "mkv"},
-        "lip_sync_audio": {"hex": "abcddd", "format": "wav", "type": "mkv"},
+    "files": {
+        "video_1": {"hex": "abcdef", "format": "mp4"},
+        "background_image": {"hex": "abcddd", "format": "jpeg"},
+        "lip_sync_audio": {"hex": "abcddd", "format": "wav"},
     },
     "video_components": {
         0: [

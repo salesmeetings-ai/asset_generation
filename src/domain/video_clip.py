@@ -159,7 +159,7 @@ class VideoClip:
                 str(path), fps=self.fps, codec=codec, verbose=False, logger=None, audio_codec="aac", threads=threads
             )
 
-    def bytes(self):
+    def bytes(self) -> bytes:
         self._compose()
         with TemporaryDirectory(prefix="my_dear_tmp_") as directory:
             file_path = Path(directory) / "video.mp4"

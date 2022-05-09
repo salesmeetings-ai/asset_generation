@@ -6,4 +6,6 @@ requests~=2.27.1
 Pillow~=9.1.0
 flask~=2.1.2
 
+pytest
+
 black[d]==22.3.0
