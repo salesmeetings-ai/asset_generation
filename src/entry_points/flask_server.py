@@ -10,6 +10,8 @@ def generate_vid():
     #  mask
     # concatenate
     return "<p>Hello, World!</p>"
+
+
 NATO_STANDARTS = {
     "output_format": "mp4",
     "files": {
@@ -18,46 +20,47 @@ NATO_STANDARTS = {
         "background_image": {"hex": "abcddd", "format": "jpeg"},
         "lip_sync_audio": {"hex": "abcddd", "format": "wav"},
     },
-    "video_components": {
-        0: [
-            {
-                "file": "background_image",
-                "commands": [
-                    {"slice": [0, "end"]},
-                    {"set_position": [0, 0]},
-                ],
-            },
-        ],
-        1: [
-            {
-                "file": "video_1",
-                "commands": [
-                    {"slice": [0, 2]},
-                    {"set_position": [0, 0]},
-                    {"resize": [150, 150]},
-                    {"circle_mask": ""},
-                ],
-            },
-            {  # lip sync part
-                "file": "video_1",
-                "commands": [
-                    {"slice": [2, 3]},
-                    {"set_position": [0, 0]},
-                    {"lip_sync": "lip_sync_audio"},
-                    {"resize": [150, 150]},
-                    {"circle_mask": ""},
-                ],
-            },
-            {
-                "file": "video_1",
-                "commands": [
-                    {"add_image": "image_logo"},
-                    {"slice": [3, "end"]},
-                    {"set_position": [0, 0]},
-                    {"resize": [150, 150]},
-                    {"circle_mask": ""},
-                ],
-            },
-        ],
+    "layers": {
+        {
+            "depth": 0,
+            "commands": [],
+            "video_components": [
+                {
+                    "file": "background_image",
+                    "commands": [
+                        {"set_duration": "something"},
+                        {"set_position": [0, 0]},
+                    ],
+                },
+            ],
+        },
+        {
+            "depth": 1,
+            "commands": [
+                {"set_position": [0, 0]},
+                {"resize": [150, 150]},
+                {"circle_mask": ""},
+            ],
+            "video_components": [
+                {
+                    "file": "video_1",
+                    "commands": [{"slice": [0, 2]}],
+                },
+                {  # lip sync part
+                    "file": "video_1",
+                    "commands": [
+                        {"slice": [2, 3]},
+                        {"lip_sync": "lip_sync_audio"},
+                    ],
+                },
+                {
+                    "file": "video_1",
+                    "commands": [
+                        {"add_image": "image_logo"},
+                        {"slice": [3, "end"]},
+                    ],
+                },
+            ],
+        },
     },
 }
