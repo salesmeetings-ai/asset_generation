@@ -23,11 +23,11 @@ NATO_STANDARTS = {
     "layers": {
         {
             "depth": 0,
-            "commands": [],
+            "effects": [],
             "video_components": [
                 {
                     "file": "background_image",
-                    "commands": [
+                    "effects": [
                         {"set_duration": "something"},
                         {"set_position": [0, 0]},
                     ],
@@ -36,7 +36,7 @@ NATO_STANDARTS = {
         },
         {
             "depth": 1,
-            "commands": [
+            "effects": [
                 {"set_position": [0, 0]},
                 {"resize": [150, 150]},
                 {"circle_mask": ""},
@@ -44,18 +44,18 @@ NATO_STANDARTS = {
             "video_components": [
                 {
                     "file": "video_1",
-                    "commands": [{"slice": [0, 2]}],
+                    "effects": [{"slice": [0, 2]}],
                 },
                 {  # lip sync part
                     "file": "video_1",
-                    "commands": [
+                    "effects": [
                         {"slice": [2, 3]},
                         {"lip_sync": "lip_sync_audio"},
                     ],
                 },
                 {
                     "file": "video_1",
-                    "commands": [
+                    "effects": [
                         {"add_image": "image_logo"},
                         {"slice": [3, "end"]},
                     ],

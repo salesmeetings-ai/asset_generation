@@ -1,5 +1,4 @@
 import logging
-import uuid
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from typing import Tuple, List
@@ -12,12 +11,10 @@ from moviepy.video.fx.resize import resize
 from moviepy.video.fx.speedx import speedx as speed_up
 from moviepy.video.tools.drawing import circle
 
-from domain.audio_clip import AudioClip
-from domain.dimensions import Dimensions
-from domain.image import Image
-from domain.position import Position
-
-from src.domain.effect import Effect
+from .audio_clip import AudioClip
+from .dimensions import Dimensions
+from .image import Image
+from .position import Position
 
 log = logging.getLogger(__name__)
 
@@ -72,6 +69,7 @@ class VideoClip:
         self.clip = self.clip.set_position(position.horizontal_vertical_tuple())
 
     def copy(self):
+        self._compose()
         return VideoClip(self.clip.copy())
 
     def add_overlay(
@@ -158,7 +156,13 @@ class VideoClip:
             )
         else:
             self.clip.write_videofile(
-                str(path), fps=self.fps, codec=codec, verbose=False, logger=None, audio_codec="aac", threads=threads
+                str(path),
+                fps=self.fps,
+                codec=codec,
+                verbose=False,
+                logger=None,
+                audio_codec="aac",
+                threads=threads,
             )
 
     def bytes(self) -> bytes:
@@ -182,9 +186,6 @@ class VideoClip:
             self.clip.duration = entire_clip_duration
             self._children = []
 
-    def apply_effect(self, effect: Effect):
-        pass
-
 
 def concatenate_video_clips(video_clips: List[VideoClip], method="chain"):
     return VideoClip(
@@ -192,3 +193,11 @@ def concatenate_video_clips(video_clips: List[VideoClip], method="chain"):
             [video_clip.clip for video_clip in video_clips], method=method
         )
     )
+
+
+def compose_video_clips(video_clips: List[VideoClip]):
+    clips = [video_clip.clip for video_clip in video_clips]
+    max_duration = max([video_clip.duration for video_clip in video_clips])
+    clip = CompositeVideoClip(clips)
+    clip.duration = max_duration
+    return VideoClip(clip)

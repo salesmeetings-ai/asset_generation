@@ -1,5 +1,5 @@
 from abc import ABC
 
 
-class Effect(ABC):
+class VideoEffect(ABC):
     pass
